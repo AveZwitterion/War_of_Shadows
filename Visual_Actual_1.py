@@ -54,17 +54,10 @@ class MyApp(App):
 
             for i in range(5):
                 image_layout.add_widget(Image(source=self.players[self.cnt][i]))
-                text_layout.add_widget(Label(text= self.positions[i], font_size= 60))
-
-
-
-            #for img_path in self.players[self.cnt]:
-            #    image_layout.add_widget(Image(source=img_path))
-            #   text_layout.add_widget(Label(text= self.positions[], font_size= 60))
-                
+                text_layout.add_widget(Label(text= self.positions[i], font_size= 60))      
+                         
             self.layout.add_widget(image_layout)
             self.layout.add_widget(text_layout)
-            #self.layout.add_widget(Label(text="x 4     x 3     x 2     x 0    x -1", font_size= 100))
             self.cnt += 1
             hide_button = Button(text="Готов, передаю!", font_size= 60, on_press=self.show_pass_screen)
             self.layout.add_widget(hide_button)
