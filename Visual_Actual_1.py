@@ -12,6 +12,7 @@ class MyApp(App):
         self.layout = BoxLayout(orientation="vertical")
         self.seq = ["Bear.png", "Eagle.png", "Elephant.png", "Horse.png", "Lion.png"]
         self.players = [[""] * 5 for _ in range(4)]
+        self.positions = ["x 4", "x 3", "x 2", "x 0", "x -1"]
         self.razresh = [[] for _ in range(5)]
         self.cnt = 0
         self.pl_count = 0
@@ -46,13 +47,24 @@ class MyApp(App):
         if self.cnt < self.pl_count:
             self.layout.clear_widgets()
             self.layout.add_widget(Label(text=f"Игрок {self.cnt + 1}:", font_size= 60))
-
-            image_layout = BoxLayout(orientation="horizontal")
-            for img_path in self.players[self.cnt]:
-                image_layout.add_widget(Image(source=img_path))
             
+            image_layout = BoxLayout(orientation="horizontal")
+            text_layout = BoxLayout(orientation="horizontal")
+
+
+            for i in range(5):
+                image_layout.add_widget(Image(source=self.players[self.cnt][i]))
+                text_layout.add_widget(Label(text= self.positions[i], font_size= 60))
+
+
+
+            #for img_path in self.players[self.cnt]:
+            #    image_layout.add_widget(Image(source=img_path))
+            #   text_layout.add_widget(Label(text= self.positions[], font_size= 60))
+                
             self.layout.add_widget(image_layout)
-            self.layout.add_widget(Label(text="x 4     x 3     x 2     x 0    x -1", font_size= 100))
+            self.layout.add_widget(text_layout)
+            #self.layout.add_widget(Label(text="x 4     x 3     x 2     x 0    x -1", font_size= 100))
             self.cnt += 1
             hide_button = Button(text="Готов, передаю!", font_size= 60, on_press=self.show_pass_screen)
             self.layout.add_widget(hide_button)
